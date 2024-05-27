@@ -132,8 +132,11 @@
 const express = require('express');
 const app = express();
 const db = require('./db');
+require('dotenv').config();
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
+const PORT = process.env.PORT || 3002;
 
 
 app.get('/',(req,res)=>{
@@ -148,7 +151,7 @@ const menuItemRoutes = require('./routes/menuRoutes');
 app.use('/menu',menuItemRoutes);
 
 
-app.listen(3002,(err)=>{
+app.listen(PORT,(err)=>{
     if(err){
         console.log(err);
     }
